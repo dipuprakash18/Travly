@@ -1,7 +1,6 @@
 if(process.env.NODE_ENV != "production"){
      require('dotenv').config();
 }
-console.log(process.env.SECRET);
 
 const express = require('express');
 const app = express();
@@ -55,7 +54,7 @@ const store = MongoStore.create({
       },
       touchAfter: 24 * 3600,
 });
-store.on("error", ()=>{
+store.on("error", (err)=>{
    console.log("ERROR in MONGO SESSION STORE", err);
 });
 
@@ -116,6 +115,4 @@ app.use((err,req,res,next) =>{
      res.status(statusCode).render('listings/error.ejs',{message});
 });
 
-app.listen(8080,() =>{
-      console.log('app is listen!!');
-});
+module.exports = app;
