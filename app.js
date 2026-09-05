@@ -31,28 +31,32 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 const dburl = process.env.ATLASDB_URL;
 
+if (!dburl) {
+    throw new Error("ATLASDB_URL is not defined");
+}
+
+if (!process.env.SECRET) {
+    throw new Error("SECRET is not defined");
+}
+
 async function main() {
-  try {
-    console.log("Connecting to MongoDB...");
-
-    await mongoose.connect(dburl);
-
-    console.log("MongoDB connected successfully");
-  } catch (err) {
-    console.log("MongoDB connection error:");
-    console.log(err);
-  }
+    try {
+        console.log("Connecting to MongoDB...");
+        await mongoose.connect(dburl);
+        console.log("MongoDB connected successfully");
+    } catch (err) {
+        console.error("MongoDB connection error:", err);
+    }
 }
 
 main();
 
-
 const store = MongoStore.create({
-      mongoUrl: dburl,
-      crypto: {
-            secret: process.env.SECRET,
-      },
-      touchAfter: 24 * 3600,
+    mongoUrl: dburl,
+    crypto: {
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24 * 3600,
 });
 store.on("error", (err)=>{
    console.log("ERROR in MONGO SESSION STORE", err);
@@ -64,10 +68,10 @@ const sessionOption = {
       resave: false,
       saveUninitialized: true,
      cookie: {
-      expire: Date.now() + 7 * 24 * 60 * 60 * 1000,
-      maxAge:  7 * 24 * 60 * 60 * 1000,
-      httpOnly: true,
-     },
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+      }
 };
 
 // app.get('/',(req,res)=>{
