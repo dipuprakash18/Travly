@@ -74,9 +74,9 @@ const sessionOption = {
       }
 };
 
-// app.get('/',(req,res)=>{
-//       res.send("successfullY connected !")
-// });
+app.get('/',(req,res)=>{
+      res.render("/listings");
+});
 
 
 app.use(session(sessionOption));
