@@ -114,3 +114,55 @@ body {
 .buttons-container button {
   width: 120px; /* or desired width */
 }
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+
+    .navbar {
+        height: auto !important;
+        min-height: 5rem;
+    }
+
+    .navbar-collapse {
+        padding: 0.5rem 0;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbar-nav.ms-auto {
+        margin-left: 0 !important;
+    }
+
+    /* Search bar */
+    .navbar form {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .search-inp {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .search-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    /* Navbar links */
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0;
+    }
+
+    /* Cards */
+    .listing-card {
+        width: 100%;
+    }
+
+    .card-img-top {
+        width: 100% !important;
+        height: auto;
+    }
+}

@@ -34,7 +34,7 @@
 
 .starability-result[data-rating="1"]::after {
   width: 30px;
-}j
+}
 
 @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi) {
   .starability-result {

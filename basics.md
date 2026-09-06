@@ -398,7 +398,7 @@ req.login(registerUser,(err) =>{
                   if(err){
                       return next(err);
                   }
-                  req.flash('success',"Welcome to Wanderlust!");
+                  req.flash('success',"Welcome to Veyora!");
                   res.redirect("/listings")
 });
 

@@ -118,4 +118,10 @@ app.use((err,req,res,next) =>{
      res.status(statusCode).render('listings/error.ejs',{message});
 });
 
+if (process.env.NODE_ENV !== "production") {
+    app.listen(8080, () => {
+        console.log("app is listening on port 8080");
+    });
+}
+
 module.exports = app;
