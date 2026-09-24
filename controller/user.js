@@ -14,7 +14,7 @@ module.exports.signup = async(req,res)=>{
                   if(err){
                       return next(err);
                   }
-                  req.flash('success',"Welcome to Veyora!");
+                  req.flash('success',"Welcome to Travly!");
                   res.redirect("/listings")
             });
       } catch(e){
@@ -38,7 +38,7 @@ module.exports.logout = (req,res)=>{
 };
 
 module.exports.login = async(req,res) =>{
-       req.flash("success","welcome to Veyora!");
+       req.flash("success","welcome to Travly!");
        let redirectUrl = res.locals.redirectUrl || "/listings";
        res.redirect(redirectUrl);   // we not use req.session.redirectUrl  --> b/c when passport.authenticate  call then it delete the req.session.redircetUrl
 };
